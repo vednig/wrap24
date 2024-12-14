@@ -5,6 +5,8 @@ interface ProfileCardProps {
   type: string
   username: string
   contributions: number
+
+  bugs:number
 }
 
 const cardImages = {
@@ -18,14 +20,15 @@ const cardImages = {
   'real-deal': '/1734055502752.png',
 }
 
-export function getProfileCardType(contributions: number): string {
-  if (contributions >= 1000) return 'real-deal'
-  if (contributions >= 750) return 'developer-pro'
-  if (contributions >= 500) return 'fleet-master'
-  if (contributions >= 400) return 'pr-manager'
-  if (contributions >= 300) return 'maintainer'
-  if (contributions >= 200) return 'c3po'
-  if (contributions >= 100) return 'contributor'
+export function getProfileCardType(contributions: number,bugs:number): string {
+  console.log(bugs)
+  if (contributions >= 1000 ) return 'real-deal'
+  if (contributions >= 750 || bugs>=200 ) return 'developer-pro'
+  if (contributions >= 500 || bugs>=130 ) return 'fleet-master'
+  if (contributions >= 400 || bugs>=100 ) return 'pr-manager'
+  if (contributions >= 250 || bugs>=50 ) return 'maintainer'
+  if (contributions >= 200 || bugs>=20 ) return 'c3po'
+  if (bugs!= 0 || contributions >= 100   ) return 'contributor'
   return 'learning'
 }
 

@@ -8,6 +8,34 @@ interface StatProps {
   color: string
 }
 
+const getDataBasedDescription = (title: string, value: number): string => {
+  switch (title) {
+    case "Lines of Code":
+      return value < 50000 
+        ? "That's enough to wrap around the North Pole twice!" 
+        : value < 25000 
+        ? "That's a lot more than what Santa Packs for Gifts!" : "Santa's is impressed with your code!"
+    case "Bugs Squashed":
+      return value > 100 
+        ? "You're the ultimate debug detective!" 
+        : "Every bug squashed is a gift to your users!"
+    case "Total Commits":
+      return value > 1000 
+        ? "Your commit history is longer than Santa's naughty list!" 
+        : "Each commit is a step towards coding excellence!"
+    case "GitHub Contributions":
+      return value > 500 
+        ? "Your contribution graph is greener than a Christmas tree!" 
+        : "You're spreading code cheer all year round!"
+    case "Stack Overflow Contributions":
+      return value > 50 
+        ? "You're a coding Santa, delivering answers to developers in need!" 
+        : "Every answer helps light the way for fellow developers!"
+    default:
+      return "You're sleighing it in the world of code!"
+  }
+}
+
 export default function StatSlide({ stat }: { stat: StatProps }) {
   const getIcon = (title: string) => {
     switch (title) {
@@ -25,6 +53,8 @@ export default function StatSlide({ stat }: { stat: StatProps }) {
         return <Coffee className="w-16 h-16 mb-4" />
     }
   }
+
+    const description = getDataBasedDescription(stat.title, parseInt(stat.value))
 
   return (
     <motion.div
@@ -49,7 +79,7 @@ export default function StatSlide({ stat }: { stat: StatProps }) {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-xl"
       >
-        {stat.description}
+        {description}
       </motion.p>
     </motion.div>
   )

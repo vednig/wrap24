@@ -28,6 +28,8 @@ export default function DevWrapped() {
   const [devStats, setDevStats] = useState<DevStats | null>(null)
   const [error, setError] = useState<{ message: string; dismiss: () => void } | null>(null)
   const [githubUsername, setGithubUsername] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(false)
+
 
   useEffect(() => {
     // Check for URL parameters on mount
@@ -76,6 +78,8 @@ export default function DevWrapped() {
   }
 
   const fetchDevStats = async (githubUrl: string, stackOverflowUrl: string) => {
+    setIsLoading(true)
+
     try {
       const { githubUsername, stackOverflowId } = extractProfileInfo(githubUrl, stackOverflowUrl)
       const response = await fetch(`https://devwrap.betaco.tech/developer-stats?github_username=${githubUsername}&stackid=${stackOverflowId}`, {
@@ -96,6 +100,8 @@ export default function DevWrapped() {
       // Use mock data as fallback
       setDevStats(getMockDevStats())
       setCurrentSlide(0)
+    }finally{
+      setIsLoading(false)
     }
   }
 
@@ -149,7 +155,7 @@ export default function DevWrapped() {
     : []
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-b from-red-900 to-green-900 text-white overflow-hidden relative">
+    <div className="h-screen w-screen bg-gradient-to-b from-black to-gray-800 text-white overflow-hidden relative">
       <Snowfall />
       <AnimatePresence mode="wait">
         {currentSlide === -1 && (
@@ -187,6 +193,14 @@ export default function DevWrapped() {
           >
             Dismiss
           </button>
+        </div>
+      )}
+            {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-black p-5 rounded-lg flex flex-col items-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mb-4"></div>
+            <p className="text-red-600 font-semibold">Loading your Dev Wrapped...</p>
+          </div>
         </div>
       )}
     </div>

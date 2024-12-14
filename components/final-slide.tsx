@@ -31,7 +31,7 @@ interface FinalSlideProps {
 }
 
 export default function FinalSlide({ stats, devStats, githubUsername }: FinalSlideProps) {
-  const profileCardType = getProfileCardType(devStats.total_contributions)
+  const profileCardType = getProfileCardType(devStats.total_contributions,devStats.total_commits_with_bug)
 
   const handleShare = async () => {
     const shareUrl = `${window.location.origin}?github=${githubUsername}&contributions=${devStats.total_contributions}&lines=${devStats.total_linesize_of_code}&bugs=${devStats.total_commits_with_bug}`
@@ -84,6 +84,8 @@ export default function FinalSlide({ stats, devStats, githubUsername }: FinalSli
               type={profileCardType}
               username={githubUsername}
               contributions={devStats.total_contributions}
+              bugs={devStats.total_commits_with_bug}
+
             />
           </div>
 
