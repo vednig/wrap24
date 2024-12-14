@@ -13,7 +13,7 @@ export default function UserInput({ onSubmit }: UserInputProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!isValidUrl(githubUrl) || !isValidUrl(stackOverflowUrl)) {
+    if (!isValidUrl(githubUrl) ) {
       setError('Please enter valid GitHub and Stack Overflow profile URLs.')
       return
     }
