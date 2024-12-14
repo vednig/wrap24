@@ -42,7 +42,7 @@ export default function ProfileCard({ type, username, contributions }: ProfileCa
         alt={`${type} card`}
         width={200}
         height={100}
-        className="w-full h-[100] rounded-lg shadow-2xl"
+        className="h-[100] rounded-lg shadow-2xl"
       />
       <div className="absolute top-16 right-20 text-center text-white">
         <h3 className="text-xl font-bold">{username}</h3>
