@@ -8,7 +8,7 @@
       "css": "app/globals.css",
       "baseColor": "neutral",
       "cssVariables": true,
-      "prefix": "--legacy-peer-deps"
+      "prefix": ""
     },
     "aliases": {
       "components": "@/components",
