@@ -74,7 +74,7 @@ export default function FinalSlide({ stats, devStats, githubUsername }: FinalSli
             className="mb-8 bg-white/20 hover:bg-white/30 text-white"
           >
             <Share2 className="w-4 h-4 mr-2" />
-            Share My Dev Wrapped
+            Share @{githubUsername}'s Wrapped
           </Button>
 
           {/* Profile Card with improved visibility */}
