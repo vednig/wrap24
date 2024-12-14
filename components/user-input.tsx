@@ -65,7 +65,7 @@ export default function UserInput({ onSubmit }: UserInputProps) {
             onChange={(e) => setStackOverflowUrl(e.target.value)}
             className="w-full p-2 rounded text-black"
             placeholder="https://stackoverflow.com/users/youruserid/username"
-            required
+            
           />
         </div>
         <motion.button
