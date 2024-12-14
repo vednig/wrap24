@@ -57,7 +57,7 @@ export default function UserInput({ onSubmit }: UserInputProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="stackoverflow" className="block text-white mb-2">Stack Overflow Profile URL</label>
+          <label htmlFor="stackoverflow" className="block text-white mb-2">Stack Overflow Profile URL (Optional)</label>
           <input
             id="stackoverflow"
             type="url"
